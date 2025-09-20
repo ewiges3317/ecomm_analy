@@ -1,0 +1,13 @@
+file,rows_est,cols,key_signals_found
+customer_service.csv,6063,7,customer_id
+marketing_channels.csv,99441,7,customer_id
+marketing_spend.csv,150,6,
+olist_category_translation.csv,71,2,
+olist_customers.csv,99441,5,customer_id;customer_city;customer_state
+olist_order_items.csv,112650,7,order_id;seller_id;product_id;freight_value;price
+olist_orders.csv,99441,8,order_id;customer_id;order_purchase_timestamp;order_delivered_customer_date;order_estimated_delivery_date
+olist_payments.csv,103886,5,order_id;payment_type
+olist_products.csv,32951,9,product_id;product_weight_g;product_length_cm;product_height_cm;product_width_cm
+olist_reviews.csv,104719,7,order_id;review_score;review_comment_message
+olist_sellers.csv,3095,4,seller_id;seller_city;seller_state
+online_retail.csv,541909,8,

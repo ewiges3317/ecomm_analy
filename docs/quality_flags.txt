@@ -1,0 +1,5 @@
+[products] non-positive dimension/weight rows: 4
+[orders] delivered AFTER estimate: 7827
+[online_retail] returns rows (Quantity<0): 10624
+[online_retail] zero/neg UnitPrice rows: 2517
+[payments] median |payment_sum - item_total|: 0.00

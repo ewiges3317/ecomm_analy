@@ -1,0 +1,6 @@
+delay_bucket,n,avg_review
+early_2d_or_more,86718,4.296
+late_1to3,1852,3.291
+on_time,5573,2.9
+late_4to7,1748,2.105
+late_8plus,2782,1.696

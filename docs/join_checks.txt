@@ -1,0 +1,10 @@
+[orders] duplicates on ['order_id']: 0
+[order_items] duplicates on ['order_id', 'order_item_id']: 0
+[payments] duplicates on ['order_id', 'payment_sequential']: 0
+[customers] duplicates on ['customer_id']: 0
+[products] duplicates on ['product_id']: 0
+[join] items→orders missing rate: 0.0000
+[join] items→customers missing rate: 0.0000
+[join] items→payments (aggregated) missing rate: 0.0000
+[sanity] median |payment_sum - item_total|: 0.00
+[counts] orders=99441 items=112650 payments=103886 customers=99441 products=32951

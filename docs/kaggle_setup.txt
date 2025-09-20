@@ -1,0 +1,8 @@
+MISSING: C:\Users\jared\.kaggle\kaggle.json
+
+Steps:
+1)) Open https://www.kaggle.com/account
+2)) Click "Create New API Token"
+3)) Move the downloaded kaggle.json to:
+    C:\Users\jared\.kaggle\kaggle.json
+4)) Re-run this batch file.

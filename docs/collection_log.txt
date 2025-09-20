@@ -1,0 +1,15 @@
+DATA COLLECTION INVENTORY
+- data\raw\brazilian_ecommerce\olist.zip | size=44717580 | rows= | cols=
+- data\raw\brazilian_ecommerce\olist_customers_dataset.csv | size=9033957 | rows=99441 | cols=5
+- data\raw\brazilian_ecommerce\olist_geolocation_dataset.csv | size=61273883 | rows=1000163 | cols=5
+- data\raw\brazilian_ecommerce\olist_orders_dataset.csv | size=17654914 | rows=99441 | cols=8
+- data\raw\brazilian_ecommerce\olist_order_items_dataset.csv | size=15438671 | rows=112650 | cols=7
+- data\raw\brazilian_ecommerce\olist_order_payments_dataset.csv | size=5777138 | rows=103886 | cols=5
+- data\raw\brazilian_ecommerce\olist_order_reviews_dataset.csv | size=14451670 | rows=104719 | cols=7
+- data\raw\brazilian_ecommerce\olist_products_dataset.csv | size=2379446 | rows=32951 | cols=9
+- data\raw\brazilian_ecommerce\olist_sellers_dataset.csv | size=174703 | rows=3095 | cols=4
+- data\raw\brazilian_ecommerce\product_category_name_translation.csv | size=2613 | rows=71 | cols=2
+- data\raw\online_retail\online_retail.xlsx | size=23715344 | rows= | cols=8
+- data\raw\synthetic\customer_service.csv | size=496069 | rows=6063 | cols=7
+- data\raw\synthetic\marketing_channels.csv | size=8176841 | rows=99441 | cols=7
+- data\raw\synthetic\marketing_spend.csv | size=5881 | rows=150 | cols=6

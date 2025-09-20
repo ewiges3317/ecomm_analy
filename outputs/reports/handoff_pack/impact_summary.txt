@@ -1,0 +1,23 @@
+=== DELIVERY → CSAT → REPEAT: $ IMPACT SIMULATION ===
+Orders analyzed: 99,441
+Baseline late%: 6.57%
+Observed repeat 90d: on-time 2.36% | late 2.04%
+Delta repeat rate from fixing lateness: +0.32 pp
+Assumed AOV: $137.75
+
+[Overall] Reduce late% by 5.0 pp:
+- Late orders converted: 4,972
+- Incremental repeat orders: 16
+- Incremental revenue: $2,212.97
+
+[By State] Reduce late% by 3.0 pp per state (>= 200 orders):
+- SP: convert 1,252 late → +4 repeats → +$509
+- RJ: convert 386 late → +1 repeats → +$178
+- MG: convert 349 late → +1 repeats → +$155
+- RS: convert 164 late → +1 repeats → +$73
+- PR: convert 151 late → +0 repeats → +$67
+- SC: convert 109 late → +0 repeats → +$51
+- BA: convert 101 late → +0 repeats → +$50
+- DF: convert 64 late → +0 repeats → +$29
+- GO: convert 61 late → +0 repeats → +$29
+- ES: convert 61 late → +0 repeats → +$27

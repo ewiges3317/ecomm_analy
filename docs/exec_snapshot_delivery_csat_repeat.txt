@@ -1,0 +1,17 @@
+=== DELIVERY → CSAT → REPEAT: SNAPSHOT ===
+Orders analyzed: 99,441
+Late% overall: 6.57%
+Avg review (on-time): 4.21 | (late): 2.27
+Repeat 90d (on-time): 2.36% | (late): 2.04%
+
+Top states by late% (first 10):
+- AL: 20.58% late (n=413)
+- MA: 16.73% late (n=747)
+- SE: 14.57% late (n=350)
+- PI: 13.33% late (n=495)
+- CE: 13.17% late (n=1336)
+- BA: 11.72% late (n=3380)
+- RJ: 11.63% late (n=12852)
+- PA: 10.87% late (n=975)
+- RR: 10.87% late (n=46)
+- ES: 10.53% late (n=2033)
