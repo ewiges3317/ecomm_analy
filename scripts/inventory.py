@@ -1,34 +1,29 @@
 # -*- coding: utf-8 -*-
 # inventories raw datasets -> docs/inventory.csv and docs/collection_log.txt
-
-import os, csv, hashlib
+from pathlib import Path
+import csv, hashlib
 import pandas as pd
 
-PROJECT_ROOT = r"C:\Users\jared\OneDrive\Documents\Ecom data\ecommerce_analytics_project"
-RAW_DIRS = [
-    os.path.join(PROJECT_ROOT, "data", "raw", "brazilian_ecommerce"),
-    os.path.join(PROJECT_ROOT, "data", "raw", "online_retail"),
-    os.path.join(PROJECT_ROOT, "data", "raw", "synthetic"),
-]
-DOCS_DIR = os.path.join(PROJECT_ROOT, "docs")
-os.makedirs(DOCS_DIR, exist_ok=True)
+# Use repo-relative paths (portable across machines/OS)
+from scripts._paths import ROOT, DATA_RAW, DOCS, RAW_BRAZIL, RAW_ONLINE_RETAIL, RAW_SYNTHETIC
 
-def md5(path, block=65536):
+RAW_DIRS = [RAW_BRAZIL, RAW_ONLINE_RETAIL, RAW_SYNTHETIC]
+
+def md5(path: Path, block: int = 65536) -> str:
     h = hashlib.md5()
-    with open(path, "rb") as f:
+    with path.open("rb") as f:
         for chunk in iter(lambda: f.read(block), b""):
             h.update(chunk)
     return h.hexdigest()
 
-def csv_head_cols(path, n=50):
-    # try to read a small sample to get columns
+def csv_head_cols(path: Path, n: int = 50):
     try:
         df = pd.read_csv(path, nrows=n)
         return list(df.columns)
     except Exception:
         return []
 
-def xlsx_cols_first_sheet(path):
+def xlsx_cols_first_sheet(path: Path):
     try:
         xf = pd.ExcelFile(path)
         if xf.sheet_names:
@@ -38,37 +33,35 @@ def xlsx_cols_first_sheet(path):
         pass
     return []
 
-def csv_fast_rowcount(path):
-    # quick & cheap: line count minus header (won't load to RAM)
+def csv_fast_rowcount(path: Path):
     try:
-        with open(path, "rb") as f:
+        with path.open("rb") as f:
             return max(sum(1 for _ in f) - 1, 0)
     except Exception:
         return ""
 
-def make_row(p):
-    rel = os.path.relpath(p, PROJECT_ROOT)
-    st = os.stat(p)
-    size = st.st_size
+def make_row(p: Path):
+    rel = p.relative_to(ROOT).as_posix()
+    size = p.stat().st_size
     hash_ = md5(p)
     rows = ""
     ncols = ""
     cols_preview = ""
 
-    lower = p.lower()
-    if lower.endswith(".csv"):
+    lower = p.suffix.lower()
+    if lower == ".csv":
         cols = csv_head_cols(p)
         rows = csv_fast_rowcount(p)
         ncols = len(cols) if cols else ""
         cols_preview = ",".join(cols[:20]) if cols else ""
-    elif lower.endswith(".xlsx"):
+    elif lower == ".xlsx":
         cols = xlsx_cols_first_sheet(p)
         ncols = len(cols) if cols else ""
         cols_preview = ",".join(cols[:20]) if cols else ""
 
     return {
         "relative_path": rel,
-        "filename": os.path.basename(p),
+        "filename": p.name,
         "size_bytes": size,
         "md5": hash_,
         "rows": rows,
@@ -79,14 +72,14 @@ def make_row(p):
 # collect targets
 targets = []
 for d in RAW_DIRS:
-    if os.path.isdir(d):
-        for root, _, files in os.walk(d):
-            for f in files:
-                targets.append(os.path.join(root, f))
+    if d.is_dir():
+        for p in d.rglob("*"):
+            if p.is_file():
+                targets.append(p)
 
 # write inventory.csv
-inv_csv = os.path.join(DOCS_DIR, "inventory.csv")
-with open(inv_csv, "w", newline="", encoding="utf-8") as f:
+inv_csv = DOCS / "inventory.csv"
+with inv_csv.open("w", newline="", encoding="utf-8") as f:
     w = csv.DictWriter(
         f,
         fieldnames=["relative_path", "filename", "size_bytes", "md5", "rows", "n_cols", "columns_preview"],
@@ -96,8 +89,8 @@ with open(inv_csv, "w", newline="", encoding="utf-8") as f:
         w.writerow(make_row(p))
 
 # write human-readable log
-log_txt = os.path.join(DOCS_DIR, "collection_log.txt")
-with open(log_txt, "w", encoding="utf-8") as f:
+log_txt = DOCS / "collection_log.txt"
+with log_txt.open("w", encoding="utf-8") as f:
     f.write("DATA COLLECTION INVENTORY\n")
     for p in targets:
         r = make_row(p)

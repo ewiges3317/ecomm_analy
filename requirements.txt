@@ -1,0 +1,6 @@
+pandas==2.2.2
+numpy==2.0.2
+matplotlib==3.9.2
+python-pptx==1.0.2
+# Optional for Parquet I/O; scripts fall back to CSV if missing:
+pyarrow==17.0.0
