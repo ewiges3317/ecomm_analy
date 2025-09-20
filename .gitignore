@@ -1,0 +1,18 @@
+# ignore raw + large processed
+data/raw/**
+!data/raw/brazilian_ecommerce/olist_*.csv   # keep only small sample data
+data/processed/**
+!data/processed/analysis/journey_delivery_csat_repeat.csv
+
+# ignore parquet + temp
+*.parquet
+*.pkl
+*.log
+*.tmp
+
+# venv + IDE
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.vscode/
